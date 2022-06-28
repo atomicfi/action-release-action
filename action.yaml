@@ -1,4 +1,4 @@
-name: Release an action
+name: Release action
 description: Releases an action in a consistent way to be used across action repos
 inputs:
   github-token:
