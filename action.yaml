@@ -16,3 +16,4 @@ runs:
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
         RELEASE_BRANCHES: main
+        WITH_V: true
