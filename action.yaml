@@ -4,18 +4,20 @@ inputs:
   github-token:
     description: The github token used to push release tags
     required: true
-jobs:
-  bump-version:
-    runs-on: ubuntu-latest
-    outputs:
-      tag: ${{steps.bump-version-tag.outputs.new_tag}}
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: "0"
-      - name: Bump version and push tag
-        id: bump-version-tag
-        uses: anothrNick/github-tag-action@1.36.0
-        env:
-          GITHUB_TOKEN: ${{ inputs.github-token }}
-          RELEASE_BRANCHES: main
+runs:
+  using: composite
+  steps:
+    bump-version:
+      runs-on: ubuntu-latest
+      outputs:
+        tag: ${{steps.bump-version-tag.outputs.new_tag}}
+      steps:
+        - uses: actions/checkout@v3
+          with:
+            fetch-depth: "0"
+        - name: Bump version and push tag
+          id: bump-version-tag
+          uses: anothrNick/github-tag-action@1.36.0
+          env:
+            GITHUB_TOKEN: ${{ inputs.github-token }}
+            RELEASE_BRANCHES: main s
