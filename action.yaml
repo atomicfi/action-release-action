@@ -22,3 +22,4 @@ runs:
       uses: sersoft-gmbh/running-release-tags-action@v2
       with:
         tag: ${{ steps.bump-version.outputs.new_tag }}
+        suffix-regex: '-beta\.[0-9]+'
