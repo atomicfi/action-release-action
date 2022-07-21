@@ -10,6 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Release action
-        uses: atomicfi/action-release-action@main
+        uses: atomicfi/action-release-action@feat-major-tag
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
