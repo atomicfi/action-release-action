@@ -12,8 +12,21 @@ runs:
       with:
         fetch-depth: "0"
     - name: Bump version and push tag
+      id: bump-version
       uses: anothrNick/github-tag-action@1.36.0
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
         RELEASE_BRANCHES: main
         WITH_V: true
+    - name: Get major version
+      id: major-version
+      needs: bump-version
+      shell: bash
+      run: |
+        echo "::set-output name=major-version-tag::$(cut -d . -f 1 <<< ${{steps.bump-version.outputs.new_tag}})"
+    - name: Push major tag
+      needs: major-version
+      uses: anothrNick/github-tag-action@1.36.0
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        CUSTOM_TAG: ${{ steps.major-version.outpus.major-version-tag }}
