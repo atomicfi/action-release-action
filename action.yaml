@@ -16,7 +16,7 @@ runs:
       uses: anothrNick/github-tag-action@1.36.0
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
-        RELEASE_BRANCHES: feat-major-tag-test
+        RELEASE_BRANCHES: main
         WITH_V: true
     - name: Update major and minor level tags
       uses: sersoft-gmbh/running-release-tags-action@v2
