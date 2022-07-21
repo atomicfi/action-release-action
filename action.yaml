@@ -26,10 +26,5 @@ runs:
     - name: Remove major tag
       shell: bash
       run: |
-        git tag -d ${{ steps.major-version.outputs.major-version-tag }}
-    - name: Push major tag
-      uses: anothrNick/github-tag-action@1.36.0
-      env:
-        GITHUB_TOKEN: ${{ inputs.github-token }}
-        CUSTOM_TAG: ${{ steps.major-version.outputs.major-version-tag }}
-        WITH_V: true
+        git tag -f ${{ steps.major-version.outputs.major-version-tag }}
+        git push
