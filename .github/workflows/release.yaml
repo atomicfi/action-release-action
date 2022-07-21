@@ -4,12 +4,12 @@ on:
     types:
       - closed
     branches:
-      - main
+      - feat-major-tag-test
 jobs:
   release-action:
     runs-on: ubuntu-latest
     steps:
       - name: Release action
-        uses: atomicfi/action-release-action@1.0.1
+        uses: atomicfi/action-release-action@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
