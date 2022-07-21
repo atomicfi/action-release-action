@@ -21,4 +21,4 @@ runs:
     - name: Update major and minor level tags
       uses: sersoft-gmbh/running-release-tags-action@v2
       with:
-        tag: ${{ steps.bump-version.outputs.new-tag }}
+        tag: ${{ steps.bump-version.outputs.new_tag }}
