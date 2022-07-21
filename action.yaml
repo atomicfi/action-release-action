@@ -18,13 +18,8 @@ runs:
         GITHUB_TOKEN: ${{ inputs.github-token }}
         RELEASE_BRANCHES: main
         WITH_V: true
-    - name: Get major version
-      id: major-version
-      shell: bash
-      run: |
-        echo "::set-output name=major-version-tag::$(cut -d . -f 1 <<< ${{steps.bump-version.outputs.new_tag}})"
-    - name: Update major tag
-      shell: bash
-      run: |
-        git tag -f ${{ steps.major-version.outputs.major-version-tag }}
-        git push
+    - name: Update major and minor level tags
+      uses: sersoft-gmbh/running-release-tags-action@v2
+      with:
+        tag: ${{ steps.bump-version.outputs.new_tag }}
+        suffix-regex: '-beta\.[0-9]+'
