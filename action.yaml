@@ -23,4 +23,3 @@ runs:
       with:
         tag: ${{ steps.bump-version.outputs.new_tag }}
         create-release: false
-        suffix-regex: '-beta\.[0-9]+'
