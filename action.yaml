@@ -23,6 +23,10 @@ runs:
       shell: bash
       run: |
         echo "::set-output name=major-version-tag::$(cut -d . -f 1 <<< ${{steps.bump-version.outputs.new_tag}})"
+    - name: ECHO TEST
+      shell: bash
+      run: |
+        echo testing ${{ steps.major-version.outputs.major-version-tag }}
     - name: Push major tag
       uses: anothrNick/github-tag-action@1.36.0
       env:
