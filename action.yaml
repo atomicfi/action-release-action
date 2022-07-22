@@ -19,7 +19,7 @@ runs:
         RELEASE_BRANCHES: main
         WITH_V: true
     - name: Update major and minor level tags
-      uses: sersoft-gmbh/running-release-tags-action@v2
+      uses: sersoft-gmbh/running-release-tags-action@v2.1.0
       with:
         tag: ${{ steps.bump-version.outputs.new_tag }}
         create-release: false
